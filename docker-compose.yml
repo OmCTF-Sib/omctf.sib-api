@@ -1,0 +1,41 @@
+version: '3'
+
+volumes:
+  postgres_data: {}
+  postgres_data_backups: {}
+  dbdata: {}
+
+services:
+  nginx:
+    image: nginx:latest
+    restart: unless-stopped
+    ports:
+      - "9099:8000"
+    volumes:
+      - .:/app
+      - ./compose/nginx:/etc/nginx/conf.d
+    depends_on:
+      - django
+
+  django:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    image: medzona_django
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    command: /start
+    volumes:
+      - .:/app
+
+  postgres:
+    restart: unless-stopped
+    image: mdillon/postgis
+    env_file:
+      - .env
+    volumes:
+      - ./db_dumps:/usr/src/db_dumps
+
