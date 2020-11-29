@@ -3,7 +3,7 @@ from django.db.models import Count, F, Q
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.exceptions import PermissionDenied, ValidationError
 from rest_framework.filters import SearchFilter
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.status import HTTP_202_ACCEPTED
 from rest_framework.viewsets import ModelViewSet
@@ -13,7 +13,7 @@ from .serializers import TaskSerializer
 
 
 class TaskModelViewSet(ModelViewSet):
-    permission_classes = (AllowAny, )
+    permission_classes = (IsAuthenticated, )
     serializer_class = TaskSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
     filterset_fields = ('type', )
