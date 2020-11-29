@@ -9,4 +9,6 @@ urlpatterns = [
 
     url(r"^api/v1/", include("apps.teams.urls")),
     url(r"^api/v1/", include("apps.tasks.urls")),
+    url(r"^api/v1/auth/", include("djoser.urls")),
+    url(r"^api/v1/auth/", include("djoser.urls.authtoken")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
