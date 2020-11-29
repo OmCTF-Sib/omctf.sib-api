@@ -19,8 +19,8 @@ class Task(models.Model):
     title = models.CharField("Название", max_length=255)
     description = models.TextField("Описание")
     tags = models.CharField(max_length=255, blank=True, null=True)
-    type = models.CharField("Тип", choices=TYPES)
-    video_url = models.CharField("Ссылка на видео", blank=True, null=True)
+    type = models.CharField("Тип", choices=TYPES, max_length=255)
+    video_url = models.CharField("Ссылка на видео", blank=True, null=True, max_length=255)
     flag = models.CharField("Флаг", max_length=255)
     creator = models.CharField("Создатель", max_length=255, blank=True, null=True)
 
