@@ -18,9 +18,12 @@ class TaskSerializer(serializers.ModelSerializer):
             'uuid',
             'title',
             'description',
+            'hint',
             'type',
             'tags',
             'creator',
             'video_url',
-            'files'
+            'files',
+            'score',
+            'is_solved',
         )

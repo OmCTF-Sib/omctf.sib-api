@@ -11,6 +11,7 @@ class Team(models.Model):
     university = models.CharField('ВУЗ', max_length=255)
     pc_count = models.CharField('Кол-во пк', max_length=255)
     type = models.CharField('Тип команды', max_length=255)
+    score = models.IntegerField("Кол-во баллов", default=0)
 
     login = models.CharField('Логин', max_length=255)
     password = models.CharField('Пароль', max_length=255)

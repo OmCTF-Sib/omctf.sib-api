@@ -1,4 +1,5 @@
 from apps.teams.models import FlagStatistic
+from django.db.models import Count, F, Q
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.exceptions import PermissionDenied, ValidationError
 from rest_framework.filters import SearchFilter
@@ -12,12 +13,16 @@ from .serializers import TaskSerializer
 
 
 class TaskModelViewSet(ModelViewSet):
-    queryset = Task.objects.prefetch_related('files').all()
     permission_classes = (AllowAny, )
     serializer_class = TaskSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
     filterset_fields = ('type', )
     search_fields = ('title', 'description', )
+
+    def get_queryset(self):
+        return Task.objects.prefetch_related('files').annotate(
+            is_solved=Count('solved', filter=Q(team=self.request.user.team))
+        ).order_by('type', 'is_solved').all()
 
     def check_flag(self, request, *args, **kwargs):
         flag = request.query_params.get("flag", None)
@@ -33,6 +38,7 @@ class TaskModelViewSet(ModelViewSet):
 
         task, just_created = SolvedTask.objects.get_or_create(team=request.user.team, task=task)
         if not just_created:
-            raise ValidationError({"flag": "Вы сдали этот флаг"})
+            raise ValidationError({"flag": "Вы уже сдали этот флаг"})
 
+        request.user.team.score += F('score') + task.score
         return Response(status=HTTP_202_ACCEPTED)

@@ -38,4 +38,7 @@ services:
       - .env
     volumes:
       - ./db_dumps:/usr/src/db_dumps
+  redis:
+    restart: unless-stopped
+    image: redis:5.0
 
