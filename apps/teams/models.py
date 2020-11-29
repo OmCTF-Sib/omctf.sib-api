@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -12,6 +13,7 @@ class Team(models.Model):
     pc_count = models.CharField('Кол-во пк', max_length=255)
     type = models.CharField('Тип команды', max_length=255)
     score = models.IntegerField("Кол-во баллов", default=0)
+    user = models.OneToOneField(User, 'Пользователь', related_name="team")
 
     login = models.CharField('Логин', max_length=255)
     password = models.CharField('Пароль', max_length=255)
@@ -19,6 +21,9 @@ class Team(models.Model):
     class Meta:
         verbose_name = 'Команда'
         verbose_name_plural = 'Команды'
+
+    def __str__(self):
+        return self.name
 
 
 class FlagStatistic(models.Model):
