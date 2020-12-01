@@ -38,3 +38,27 @@ I
 conf/urls.py,b/8/b8ab0238f02d028c8c9a09fcd6ef6b39d744264f
 D
 compose/django/start,f/a/fa75427fd7fbe0eecfd59c3906d4964d7cd58d75
+I
+compose/django/Dockerfile,e/4/e4b4b7aad7aa4dc330e363345ffcbaeddfb0452d
+C
+apps/tasks/admin.py,5/d/5d7a441c4fcf6a2e1baba43469f45ee3381b77a5
+I
+apps/tasks/serializers.py,5/2/52802f0466fbefff55dba27d91b58e479ec43fa6
+N
+apps/notifications/__init__.py,6/9/6980f81062a785f4fb85dedb02ffd424e788cf87
+M
+apps/notifications/routing.py,9/e/9eb51c70108a6689688dbd540756d5d38cb7c0e2
+O
+apps/notifications/consumers.py,d/5/d51f7c98e62e62fb78b7fe0022ede8f9b70e9a7b
+<
+conf/wsgi.py,b/a/bad9d81961bb3cc5c4641d505a2b00d9aa585c3b
+?
+conf/routing.py,7/6/76572fd16938d7e1e4d8fb4e650d7b9a37f9d440
+B
+apps/tasks/apps.py,d/b/dbfb72e04962c879e8116f0a2997a7dad8c39866
+D
+apps/tasks/models.py,6/9/695517bf16b568b53ab164b6e0bcba79dcc3d26a
+B
+apps/tasks/urls.py,3/1/31b555e35633fe392bd7d6dffaa33edd1e15917c
+C
+apps/tasks/views.py,e/0/e00107ed4fdc8d91a6b14ff0d6abade455976eb6
