@@ -13,7 +13,7 @@ class Team(models.Model):
     pc_count = models.CharField('Кол-во пк', max_length=255)
     type = models.CharField('Тип команды', max_length=255)
     score = models.IntegerField("Кол-во баллов", default=0)
-    user = models.OneToOneField(User, 'Пользователь', related_name="team")
+    user = models.OneToOneField(User, verbose_name='Пользователь', related_name="team", on_delete=models.CASCADE, null=True, blank=True)
 
     login = models.CharField('Логин', max_length=255)
     password = models.CharField('Пароль', max_length=255)
