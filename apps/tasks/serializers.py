@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Task, TaskFile
+from .models import News, Task, TaskFile
 
 
 class TaskFileSerializer(serializers.ModelSerializer):
@@ -27,3 +27,9 @@ class TaskSerializer(serializers.ModelSerializer):
             'score',
             'is_solved',
         )
+
+
+class NewsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = News
+        field = "__all__"

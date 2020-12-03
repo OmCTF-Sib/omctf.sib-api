@@ -10,4 +10,7 @@ urlpatterns = [
         'get': 'retrieve',
         'post': 'check_flag'
     }), name='task_detail'),
+    path('news/', view=views.NewsModelViewSet.as_view({
+        'get': 'list',
+    }), name='news_list')
 ]

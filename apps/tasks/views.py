@@ -3,13 +3,13 @@ from django.db.models import Count, F, Q
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.exceptions import PermissionDenied, ValidationError
 from rest_framework.filters import SearchFilter
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.status import HTTP_202_ACCEPTED
 from rest_framework.viewsets import ModelViewSet
 
-from .models import SolvedTask, Task
-from .serializers import TaskSerializer
+from .models import News, SolvedTask, Task
+from .serializers import NewsSerializer, TaskSerializer
 
 
 class TaskModelViewSet(ModelViewSet):
@@ -42,3 +42,9 @@ class TaskModelViewSet(ModelViewSet):
 
         request.user.team.score += F('score') + task.score
         return Response(status=HTTP_202_ACCEPTED)
+
+
+class NewsModelViewSet(ModelViewSet):
+    queryset = News.objects.all()
+    serializer_class = NewsSerializer
+    permission_classes = (AllowAny, )
