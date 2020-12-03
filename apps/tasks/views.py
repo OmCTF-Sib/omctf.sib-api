@@ -42,6 +42,7 @@ class TaskModelViewSet(ModelViewSet):
             raise ValidationError({"flag": "Вы уже сдали этот флаг"})
 
         request.user.team.score += F('score') + task.score
+        request.user.team.save()
         return Response(status=HTTP_202_ACCEPTED)
 
 
