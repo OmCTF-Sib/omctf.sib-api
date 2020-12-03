@@ -13,6 +13,7 @@ from .serializers import NewsSerializer, TaskSerializer
 
 
 class TaskModelViewSet(ModelViewSet):
+    lookup_field = "uuid"
     permission_classes = (IsAuthenticated, )
     serializer_class = TaskSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
