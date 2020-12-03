@@ -37,7 +37,7 @@ class TaskModelViewSet(ModelViewSet):
         if task.flag != flag:
             raise PermissionDenied()
 
-        task, just_created = SolvedTask.objects.get_or_create(team=request.user.team, task=task)
+        task_solved, just_created = SolvedTask.objects.get_or_create(team=request.user.team, task=task)
         if not just_created:
             raise ValidationError({"flag": "Вы уже сдали этот флаг"})
 
