@@ -26,7 +26,7 @@ class TaskModelViewSet(ModelViewSet):
         ).order_by('type', 'is_solved').all()
 
     def check_flag(self, request, *args, **kwargs):
-        flag = request.query_params.get("flag", None)
+        flag = request.data.get("flag", None)
         task = self.get_object()
 
         FlagStatistic.objects.create(
