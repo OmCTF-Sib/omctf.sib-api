@@ -11,6 +11,7 @@ class TaskFileSerializer(serializers.ModelSerializer):
 
 class TaskSerializer(serializers.ModelSerializer):
     files = TaskFileSerializer(many=True)
+    is_solved = serializers.SerializerMethodField()
 
     class Meta:
         model = Task
@@ -27,6 +28,10 @@ class TaskSerializer(serializers.ModelSerializer):
             'score',
             'is_solved',
         )
+
+    @staticmethod
+    def get_is_solved(obj):
+        return obj.is_solved
 
 
 class NewsSerializer(serializers.ModelSerializer):
