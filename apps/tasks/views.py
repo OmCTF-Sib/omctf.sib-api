@@ -23,7 +23,7 @@ class TaskModelViewSet(ModelViewSet):
     def get_queryset(self):
         return Task.objects.prefetch_related('files').annotate(
             is_solved=Count('solved', filter=Q(solved__team=self.request.user.team))
-        ).order_by('type', 'is_solved').all()
+        ).order_by('is_solved', 'type').all()
 
     def check_flag(self, request, *args, **kwargs):
         flag = request.data.get("flag", None)
