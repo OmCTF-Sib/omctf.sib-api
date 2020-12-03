@@ -32,4 +32,4 @@ class TaskSerializer(serializers.ModelSerializer):
 class NewsSerializer(serializers.ModelSerializer):
     class Meta:
         model = News
-        field = "__all__"
+        fields = "__all__"
