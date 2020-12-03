@@ -171,3 +171,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ),
 }
+
+DJOSER = {
+    'SERIALIZERS': {
+        'current_user': 'apps.teams.serializers.UserWithTeamSerializer',
+    },
+}

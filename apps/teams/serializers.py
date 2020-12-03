@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from rest_framework import serializers
 
 from .models import Team
@@ -28,4 +29,15 @@ class TeamListSerializer(serializers.ModelSerializer):
             'name',
             'type',
             'score'
+        )
+
+
+class UserWithTeamSerializer(serializers.ModelSerializer):
+    team = TeamListSerializer()
+
+    class Meta:
+        model = User
+        fields = (
+            'username',
+            'team'
         )
