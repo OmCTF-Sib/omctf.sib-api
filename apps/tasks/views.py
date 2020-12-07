@@ -47,6 +47,6 @@ class TaskModelViewSet(ModelViewSet):
 
 
 class NewsModelViewSet(ModelViewSet):
-    queryset = News.objects.all()
+    queryset = News.objects.order_by('-created_at').all()
     serializer_class = NewsSerializer
     permission_classes = (AllowAny, )

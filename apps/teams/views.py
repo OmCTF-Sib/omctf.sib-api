@@ -23,7 +23,7 @@ class MultiPermissionsMixin(object):
 
 
 class TeamModelViewSet(MultiSerializerViewSetMixin, ModelViewSet):
-    queryset = Team.objects.all()
+    queryset = Team.objects.order_by('-score').all()
     serializer_class = TeamCreateSerializer
     serializer_actions = {
         'create': TeamCreateSerializer,
