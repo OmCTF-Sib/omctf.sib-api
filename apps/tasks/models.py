@@ -1,5 +1,6 @@
 from uuid import uuid4
 
+from apps.notifications.utils import send_discord_message
 from django.db import models
 
 
@@ -11,6 +12,13 @@ class News(models.Model):
     class Meta:
         verbose_name = "Новость"
         verbose_name_plural = "Новости"
+
+    def save(self, *args, **kwargs):
+        just_created = False if self.pk else True
+        if just_created:
+            send_discord_message(f"**{self.title}**\n{self.description}")
+
+        super(News, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
@@ -66,6 +74,16 @@ class SolvedTask(models.Model):
     team = models.ForeignKey("teams.Team", on_delete=models.CASCADE, related_name="solved")
     task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name="solved")
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        just_created = False if self.pk else True
+        if just_created and not SolvedTask.objects.filter(task=self.task).exists():
+            News.objects.create(
+                title="FIRST BLOOD",
+                description=f"Команда {self.team.name} пролила первую кровь на задании {self.task.title}"
+            )
+
+        super(SolvedTask, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = "Решеное задание"

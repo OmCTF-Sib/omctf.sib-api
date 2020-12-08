@@ -5,7 +5,7 @@ from .models import FlagStatistic, Team
 
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin):
-    list_display = ('name', 'cap_fio', 'university', )
+    list_display = ('name', 'cap_fio', 'university', 'score', )
 
 
 @admin.register(FlagStatistic)
