@@ -30,7 +30,7 @@ django-templated-mail==1.1.1
 djangorestframework==3.12.2
 djangorestframework-simplejwt==4.6.0
 djoser==2.1.0
-drf-tracking==1.5.0
+drf-api-tracking==1.7.8
 filelock==3.0.12
 gunicorn==20.0.4
 h11==0.11.0
