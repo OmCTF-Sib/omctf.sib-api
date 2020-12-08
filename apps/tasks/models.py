@@ -89,6 +89,10 @@ class SolvedTask(models.Model):
     task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name="solved")
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        verbose_name = "Решеное задание"
+        verbose_name_plural = "Решеные задания"
+
 
 class TaskFile(models.Model):
     task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name="files")
