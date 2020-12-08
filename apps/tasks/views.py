@@ -7,12 +7,13 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.status import HTTP_202_ACCEPTED
 from rest_framework.viewsets import ModelViewSet
+from rest_framework_tracking.mixins import LoggingMixin
 
 from .models import News, SolvedTask, Task
 from .serializers import NewsSerializer, TaskSerializer
 
 
-class TaskModelViewSet(ModelViewSet):
+class TaskModelViewSet(LoggingMixin, ModelViewSet):
     lookup_field = "uuid"
     permission_classes = (IsAuthenticated, )
     serializer_class = TaskSerializer
@@ -46,7 +47,7 @@ class TaskModelViewSet(ModelViewSet):
         return Response(status=HTTP_202_ACCEPTED)
 
 
-class NewsModelViewSet(ModelViewSet):
+class NewsModelViewSet(LoggingMixin, ModelViewSet):
     queryset = News.objects.order_by('-created_at').all()
     serializer_class = NewsSerializer
     permission_classes = (AllowAny, )
