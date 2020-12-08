@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'channels',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_tracking',
     'djoser',
     'corsheaders',
     'apps.teams',
