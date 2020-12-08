@@ -183,3 +183,6 @@ DJOSER = {
         'current_user': 'apps.teams.serializers.UserWithTeamSerializer',
     },
 }
+
+
+DISCORD_WEBHOOK_URL = env('DISCORD_WEBHOOK_URL')

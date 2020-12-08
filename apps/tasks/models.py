@@ -1,7 +1,5 @@
 from uuid import uuid4
 
-from asgiref.sync import async_to_sync
-from channels.layers import get_channel_layer
 from django.db import models
 
 
@@ -13,26 +11,6 @@ class News(models.Model):
     class Meta:
         verbose_name = "Новость"
         verbose_name_plural = "Новости"
-
-    def save(self, *args, **kwargs):
-        just_created = False if self.pk else True
-        if just_created:
-            room_name = "notifications"
-            layer = get_channel_layer()
-            async_to_sync(layer.group_send)(
-                room_name,
-                {
-                    'type': 'chat_message',
-                    'method': 'news',
-                    'data': {
-                        'title': self.title,
-                        'description': self.description,
-                        'created_at': self.created_at,
-                    }
-                }
-            )
-
-        super(News, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
