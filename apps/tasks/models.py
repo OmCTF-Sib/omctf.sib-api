@@ -33,6 +33,7 @@ class Task(models.Model):
         ('ADMIN', 'ADMIN'),
         ('JOY', 'JOY'),
         ('FORENSIC', 'FORENSIC'),
+        ('RECON', 'RECON'),
         ('PPC', 'PPC')
     )
 
