@@ -21,6 +21,6 @@ class SolvedTask(admin.ModelAdmin):
 
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
-    list_display = ('title', 'type', 'creator', )
+    list_display = ('title', 'type', 'creator', 'score', )
     list_filter = ('type', )
     inlines = (TaskFileInline, )
