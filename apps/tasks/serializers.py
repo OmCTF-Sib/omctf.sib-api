@@ -1,7 +1,7 @@
 from typing import Any
 from rest_framework import serializers
 
-from .models import Task, TaskFile
+from .models import Task, TaskFile, TaskType
 
 
 class TaskFileSerializer(serializers.ModelSerializer):
@@ -10,8 +10,15 @@ class TaskFileSerializer(serializers.ModelSerializer):
         fields = ('file',)
 
 
+class TaskTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TaskType
+        fields = ('name',)
+
+
 class TaskListSerializer(serializers.ModelSerializer):
     is_solved = serializers.SerializerMethodField()
+    type = TaskTypeSerializer()
 
     class Meta:
         model = Task
@@ -25,6 +32,7 @@ class TaskListSerializer(serializers.ModelSerializer):
 class TaskDetailSerializer(serializers.ModelSerializer):
     files = TaskFileSerializer(many=True)
     is_solved = serializers.SerializerMethodField()
+    type = TaskTypeSerializer()
 
     class Meta:
         model = Task

@@ -9,9 +9,21 @@ from rest_framework.status import HTTP_202_ACCEPTED
 from rest_framework.viewsets import ModelViewSet
 from django.utils.translation import gettext_lazy as _
 
-from apps.tasks.models import SolvedTask, Task, FlagStatistic
-from apps.tasks.serializers import TaskListSerializer, TaskDetailSerializer, SendFlagSerializer
+from apps.tasks.models import SolvedTask, Task, FlagStatistic, TaskType
+from apps.tasks.serializers import (
+    TaskListSerializer,
+    TaskDetailSerializer,
+    SendFlagSerializer,
+    TaskTypeSerializer,
+)
 from apps.utils.mixins import MultiSerializerViewSetMixin
+from apps.tasks.permissions import TasksTypeAccessPolicy, TasksAccessPolicy
+
+
+class TaskTypeModelViewSet(ModelViewSet):
+    queryset = TaskType.objects.all()
+    serializer_class = TaskTypeSerializer
+    permission_classes = (TasksTypeAccessPolicy,)
 
 
 class TaskModelViewSet(MultiSerializerViewSetMixin, ModelViewSet):
@@ -21,6 +33,7 @@ class TaskModelViewSet(MultiSerializerViewSetMixin, ModelViewSet):
         'retrieve': TaskDetailSerializer,
         'check': SendFlagSerializer,
     }
+    permission_classes = (TasksAccessPolicy,)
     filter_backends = (DjangoFilterBackend, SearchFilter)
     filterset_fields = ('type',)
     search_fields = ('title', 'description')
