@@ -1,10 +1,5 @@
 version: '3'
 
-volumes:
-  postgres_data: {}
-  postgres_data_backups: {}
-  dbdata: {}
-
 services:
   traefik:
     image: traefik:v2.4
@@ -48,7 +43,7 @@ services:
       - .:/app
       - ./compose/nginx:/etc/nginx/conf.d
     depends_on:
-      - ctf
+      - django
     labels:
       - traefik.enable=true
       - traefik.http.services.nginx_service.loadbalancer.server.port=80
@@ -79,9 +74,6 @@ services:
       - ctf
     env_file:
       - .env
-    volumes:
-      - ./db_dumps:/usr/src/db_dumps
-
 
 networks:
   ctf:
