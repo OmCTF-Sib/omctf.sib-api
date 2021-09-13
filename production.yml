@@ -1,0 +1,88 @@
+version: '3'
+
+volumes:
+  postgres_data: {}
+  postgres_data_backups: {}
+  dbdata: {}
+
+services:
+  traefik:
+    image: traefik:v2.4
+    container_name: traefik
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--providers.docker.endpoint=unix:///var/run/docker.sock"
+      - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
+      - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.email=noreply@omctf.ru"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+      - "--log.filePath=/var/log/traefik.log"
+    labels:
+      - "traefik.http.middlewares.redirs.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.redirs.redirectscheme.permanent=true"
+    restart: unless-stopped
+    networks:
+      - default
+      - ctf
+    ports:
+      - "443:443"
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - "./letsencrypt:/letsencrypt"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
+  nginx:
+    image: nginx:latest
+    restart: unless-stopped
+    container_name: ctf_nginx
+    networks:
+      - ctf
+    volumes:
+      - .:/app
+      - ./compose/nginx:/etc/nginx/conf.d
+    depends_on:
+      - ctf
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.nginx_service.loadbalancer.server.port=80
+      - traefik.http.routers.nginx.rule=Host(`example.com`)
+      - traefik.http.routers.nginx.entrypoints=websecure,web
+      - traefik.http.routers.nginx.tls.certresolver=myresolver
+
+  django:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    container_name: ctf_django
+    networks:
+      - ctf
+    depends_on:
+      - psql
+    env_file:
+      - .env
+    volumes:
+      - .:/apps
+
+  psql:
+    restart: unless-stopped
+    image: postgres:latest
+    container_name: ctf_postgres
+    networks:
+      - ctf
+    env_file:
+      - .env
+    volumes:
+      - ./db_dumps:/usr/src/db_dumps
+
+
+networks:
+  ctf:
+    name: ctf_network

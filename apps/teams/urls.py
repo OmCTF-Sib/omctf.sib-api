@@ -1,10 +1,8 @@
 from django.urls import path
 
-from . import views
+from apps.teams.views import TeamModelViewSet
 
 urlpatterns = [
-    path('teams/', view=views.TeamModelViewSet.as_view({
-        'get': 'list',
-        'post': 'create'
-    }), name='team'),
+    path('teams/', view=TeamModelViewSet.as_view({'get': 'list'})),
+    path('teams/<int:pk>/', view=TeamModelViewSet.as_view({'get': 'retrieve'})),
 ]

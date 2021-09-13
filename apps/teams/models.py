@@ -1,37 +1,38 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractBaseUser
+from django.utils.translation import gettext_lazy as _
 from django.db import models
+from model_utils import Choices
 
 
-class Team(models.Model):
-    name = models.CharField('Название', max_length=255)
-    cap_fio = models.CharField('ФИО Капитана', max_length=255)
-    cap_email = models.EmailField('E-mail капитана')
-    second_fio = models.CharField('ФИО Участника', max_length=255, blank=True, null=True)
-    third_fio = models.CharField('ФИО Участника', max_length=255, blank=True, null=True)
-    fourth_fio = models.CharField('ФИО Участника', max_length=255, blank=True, null=True)
-    university = models.CharField('ВУЗ', max_length=255)
-    pc_count = models.CharField('Кол-во пк', max_length=255)
-    type = models.CharField('Тип команды', max_length=255)
-    score = models.IntegerField("Кол-во баллов", default=0)
-    user = models.OneToOneField(User, verbose_name='Пользователь', related_name="team",
-                                on_delete=models.CASCADE, null=True, blank=True)
+class Team(AbstractBaseUser):
+    USERNAME_FIELD = 'name'
+    TEAM_TYPES = Choices(('newbies', _('Newbies')), ('experienced', _('Experienced')))
 
-    login = models.CharField('Логин', max_length=255)
-    password = models.CharField('Пароль', max_length=255)
+    name = models.CharField(_('Name'), max_length=255, blank=False, unique=True)
+    university = models.CharField(_('University'), max_length=255)
+    team_type = models.CharField(_('Command type'), max_length=255, choices=TEAM_TYPES)
+    score = models.IntegerField(_('Score'), default=0)
+
+    is_visible = models.BooleanField(_('Is Visible'), default=True)
 
     class Meta:
-        verbose_name = 'Команда'
-        verbose_name_plural = 'Команды'
+        verbose_name = _('Team')
+        verbose_name_plural = _('Teams')
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
 
-class FlagStatistic(models.Model):
-    team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name="statistics")
-    flag = models.CharField(max_length=255, blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+class TeamParticipant(models.Model):
+    team = models.ForeignKey(
+        Team, verbose_name=_('Team'), on_delete=models.CASCADE, related_name='participants'
+    )
+    name = models.CharField(_('Name'), max_length=1024, blank=False, null=False)
+    is_captain = models.BooleanField(_('Is Captain'), default=False)
 
     class Meta:
-        verbose_name = "Сданный флаг"
-        verbose_name_plural = "Сданные флаги"
+        verbose_name = _('Team participant')
+        verbose_name_plural = _('Team participants')
+
+    def __str__(self) -> str:
+        return self.name

@@ -1,17 +1,47 @@
 exclude: 'docs|node_modules|migrations|.git|.tox'
 default_stages: [commit]
-fail_fast: true
 
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v1.2.3
-    hooks:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v3.2.0
+  hooks:
+    - id: check-yaml
+    - id: check-json
+    - id: trailing-whitespace
+    - id: double-quote-string-fixer
+    - id: end-of-file-fixer
+
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: v0.790
+  hooks:
+    - id: mypy
+      entry: mypy .
+      pass_filenames: false
+
+- repo: https://github.com/psf/black
+  rev: aebd3c3
+  hooks:
+    - id: black
+      language_version: python
+
+- repo: https://gitlab.com/pycqa/flake8
+  rev: '3.8.2'
+  hooks:
     - id: flake8
--   repo: https://github.com/asottile/seed-isort-config
-    rev: v2.1.0
-    hooks:
-    -   id: seed-isort-config
--   repo: https://github.com/timothycrosley/isort
-    rev: 4.3.21
-    hooks:
-    -   id: isort
+      additional_dependencies:
+        - flake8-bugbear==20.1.4
+        - flake8-commas==2.0.0
+        - flake8-comprehensions==3.2.2
+        - flake8-debugger==3.2.1
+        - flake8-docstrings==1.5.0
+        - flake8-functions==0.0.4
+        - flake8-polyfill==1.0.2
+        - flake8-pytest-style==1.2.3
+        - flake8-print==3.1.4
+        - flake8-quotes==3.0.0
+        - flake8-string-format==0.3.0
+        - flake8-todo==0.7
+        - flake8-broken-line==0.2.0
+        - flake8-cognitive-complexity==0.0.2
+        - cognitive-complexity==0.0.4
+        - flake8-fine-pytest==1.0.0

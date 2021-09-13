@@ -1,0 +1,171 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-13 20:19+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+#: notifications/apps.py:8 notifications/models.py:15
+msgid "Notifications"
+msgstr "Уведомления"
+
+#: notifications/models.py:7
+msgid "Title"
+msgstr "Заголовок"
+
+#: notifications/models.py:8
+msgid "Text"
+msgstr "Текст"
+
+#: notifications/models.py:10 tasks/models.py:37 teams/models.py:19
+msgid "Is Visible"
+msgstr "Видимость"
+
+#: notifications/models.py:14
+msgid "Notification"
+msgstr "Уведомление"
+
+#: tasks/apps.py:8 tasks/models.py:41
+msgid "Tasks"
+msgstr "Задания"
+
+#: tasks/listeners.py:15
+msgid "New hint"
+msgstr "Новая подсказка"
+
+#: tasks/listeners.py:17
+#, python-format
+msgid ""
+"A hint was added to the task: %(task)s (%(task_type)s - {%(task_score)s})"
+msgstr "Была добавлена подсказка для задания: %(task)s (%(task_type)s - {%(task_score)s})"
+
+#: tasks/listeners.py:33
+msgid "First blood"
+msgstr "First blood"
+
+#: tasks/listeners.py:35
+#, python-format
+msgid "Team: %(team)s made first blood on %(task)s"
+msgstr "Команда: %(team)s пролила первую кровь на задании %(task)s"
+
+#: tasks/models.py:9 tasks/models.py:21 teams/models.py:14 teams/models.py:33
+msgid "Name"
+msgstr "Название"
+
+#: tasks/models.py:12 tasks/models.py:25
+msgid "Task type"
+msgstr "Тип задания"
+
+#: tasks/models.py:13
+msgid "Task types"
+msgstr "Типы заданий"
+
+#: tasks/models.py:22
+msgid "Description"
+msgstr "Описание"
+
+#: tasks/models.py:23 teams/models.py:17
+msgid "Score"
+msgstr "Кол-во баллов"
+
+#: tasks/models.py:29
+msgid "Tags"
+msgstr "Теги"
+
+#: tasks/models.py:29
+msgid "Separated by commas"
+msgstr "Разделяется запятыми"
+
+#: tasks/models.py:33
+msgid "URL"
+msgstr ""
+
+#: tasks/models.py:35
+msgid "Creator"
+msgstr "Создатель задания"
+
+#: tasks/models.py:40 tasks/models.py:49 tasks/models.py:66
+msgid "Task"
+msgstr "Задание"
+
+#: tasks/models.py:51 tasks/models.py:54
+msgid "File"
+msgstr "Файл"
+
+#: tasks/models.py:55
+msgid "Files"
+msgstr "Файлы"
+
+#: tasks/models.py:63 tasks/models.py:79 teams/models.py:22 teams/models.py:31
+msgid "Team"
+msgstr "Команда"
+
+#: tasks/models.py:70
+msgid "Solved task"
+msgstr "Решенное задание"
+
+#: tasks/models.py:71
+msgid "Solved tasks"
+msgstr "Решенные задания"
+
+#: tasks/models.py:81
+msgid "Flag"
+msgstr "Флаг"
+
+#: tasks/models.py:84
+msgid "Sent flag"
+msgstr "Отправленный флаг"
+
+#: tasks/models.py:85
+msgid "Sent flags"
+msgstr "Отправленные флаги"
+
+#: tasks/views.py:53
+msgid "You have already passed this flag"
+msgstr "Вы уже сдали этот флаг"
+
+#: teams/apps.py:8 teams/models.py:23
+msgid "Teams"
+msgstr "Команды"
+
+#: teams/models.py:10
+msgid "Newbies"
+msgstr "Новички"
+
+#: teams/models.py:11
+msgid "Experienced"
+msgstr "Опытные"
+
+#: teams/models.py:15
+msgid "University"
+msgstr "ВУЗ"
+
+#: teams/models.py:16
+msgid "Command type"
+msgstr "Тип комманды"
+
+#: teams/models.py:34
+msgid "Is Captain"
+msgstr "Капитан"
+
+#: teams/models.py:37
+msgid "Team participant"
+msgstr "Участник команды"
+
+#: teams/models.py:38
+msgid "Team participants"
+msgstr "Участники команды"
