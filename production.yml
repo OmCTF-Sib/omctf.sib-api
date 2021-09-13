@@ -47,7 +47,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.services.nginx_service.loadbalancer.server.port=80
-      - traefik.http.routers.nginx.rule=Host(`example.com`)
+      - traefik.http.routers.nginx.rule=Host(`example.com`) && Path(`/api`)
       - traefik.http.routers.nginx.entrypoints=websecure,web
       - traefik.http.routers.nginx.tls.certresolver=myresolver
 
