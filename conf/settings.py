@@ -23,9 +23,9 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
-THIRD_PARTY_APPS = ['rest_framework', 'djoser', 'drf_yasg', 'corsheaders']
+THIRD_PARTY_APPS = ['rest_framework', 'djoser', 'drf_yasg', 'corsheaders', 'solo']
 
-LOCAL_APPS = ['apps.teams', 'apps.tasks', 'apps.notifications']
+LOCAL_APPS = ['apps.teams', 'apps.tasks', 'apps.notifications', 'apps.main']
 
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

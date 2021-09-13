@@ -19,6 +19,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^api/v1/auth/', include('djoser.urls')),
     url(r'^api/v1/auth/', include('djoser.urls.jwt')),
+    url(r'^api/v1/', include('apps.main.urls')),
     url(r'^api/v1/', include('apps.teams.urls')),
     url(r'^api/v1/', include('apps.tasks.urls')),
     url(r'^api/v1/', include('apps.notifications.urls')),
