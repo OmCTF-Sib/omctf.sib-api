@@ -1,12 +1,12 @@
 # OmCTF.Sib - API
 
 ## Preparation for production
-Add your domain in production.yml
+###Add your domain in production.yml
 ```bash
 - traefik.http.routers.nginx.rule=Host(`example.com`)
 ```
 
-Set Up .env
+### Set Up .env
 Example:
 ```bash
 SECRET_KEY=secret
@@ -19,12 +19,12 @@ POSTGRES_USER=sibctf
 POSTGRES_PASSWORD=sibctf
 ```
 
-Up docker-compose
+### Up docker-compose
 ```bash
 docker-compose -f production.yml up --build
 ```
 
-Create superuser
+### Create superuser
 ```bash
 docker-compose -f production.yml -it ctf_django python manage.py createsuperuser
 ```
