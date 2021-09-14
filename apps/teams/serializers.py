@@ -4,6 +4,7 @@ from django.core import exceptions as django_exceptions
 from apps.teams.models import Team, TeamParticipant
 from django.db import IntegrityError, transaction
 from drf_writable_nested.serializers import WritableNestedModelSerializer
+from djoser.conf import settings
 
 
 class TeamParticipantSerializer(WritableNestedModelSerializer):
@@ -26,11 +27,16 @@ class TeamSerializer(serializers.ModelSerializer):
 class TeamCreateSerializer(WritableNestedModelSerializer):
     participants = TeamParticipantSerializer(many=True)
 
+    default_error_messages = {
+        'cannot_create_user': settings.CONSTANTS.messages.CANNOT_CREATE_USER_ERROR
+    }
+
     class Meta:
         model = Team
         fields = ('name', 'password', 'university', 'team_type', 'participants', 'pc_count')
 
     def validate(self, attrs: dict) -> dict:
+        participants = attrs.pop('participants')
         team = Team(**attrs)
         password = attrs.get('password')
 
@@ -40,6 +46,7 @@ class TeamCreateSerializer(WritableNestedModelSerializer):
             serializer_error = serializers.as_serializer_error(e)
             raise serializers.ValidationError({'password': serializer_error['non_field_errors']})
 
+        attrs['participants'] = participants
         return attrs
 
     def create(self, validated_data: dict) -> Team:
@@ -52,5 +59,8 @@ class TeamCreateSerializer(WritableNestedModelSerializer):
 
     def perform_create(self, validated_data: dict) -> Team:
         with transaction.atomic():
-            user = Team.objects.create_user(**validated_data)
-        return user
+            participants_data = validated_data.pop('participants')
+            team = Team.objects.create_user(**validated_data)
+            for participant in participants_data:
+                TeamParticipant.objects.create(**participant, team_id=team.pk)
+        return team
