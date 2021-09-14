@@ -45,6 +45,7 @@ class Team(PermissionsMixin, AbstractBaseUser):
     university = models.CharField(_('University'), max_length=255)
     team_type = models.CharField(_('Command type'), max_length=255, choices=TEAM_TYPES)
     score = models.IntegerField(_('Score'), default=0)
+    pc_count = models.IntegerField(_('PC Count'), default=0)
 
     is_visible = models.BooleanField(_('Is Visible'), default=True)
 
@@ -79,6 +80,7 @@ class TeamParticipant(models.Model):
         Team, verbose_name=_('Team'), on_delete=models.CASCADE, related_name='participants'
     )
     name = models.CharField(_('Name'), max_length=1024, blank=False, null=False)
+    email = models.EmailField(_('Email'), max_length=255, blank=True, null=True)
     is_captain = models.BooleanField(_('Is Captain'), default=False)
 
     class Meta:

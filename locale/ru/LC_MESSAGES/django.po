@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-14 08:33+0000\n"
+"POT-Creation-Date: 2021-09-14 09:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr "Соревнования начались ?"
 msgid "Max Participants in Team"
 msgstr "Максимальное кол-во участников в команде"
 
-#: main/models.py:12 main/models.py:13 main/models.py:16
+#: main/models.py:12 main/models.py:13
 msgid "Site settings"
 msgstr "Настройки сайта"
 
@@ -52,7 +52,7 @@ msgstr "Заголовок"
 msgid "Text"
 msgstr "Текст"
 
-#: notifications/models.py:10 tasks/models.py:37 teams/models.py:49
+#: notifications/models.py:10 tasks/models.py:37 teams/models.py:50
 msgid "Is Visible"
 msgstr "Видимость"
 
@@ -85,7 +85,7 @@ msgstr "First blood"
 msgid "Team: %(team)s made first blood on %(task)s"
 msgstr "Команда: %(team)s пролила первую кровь на задании %(task)s"
 
-#: tasks/models.py:9 tasks/models.py:21 teams/models.py:44 teams/models.py:67
+#: tasks/models.py:9 tasks/models.py:21 teams/models.py:44 teams/models.py:82
 msgid "Name"
 msgstr "Название"
 
@@ -133,7 +133,7 @@ msgstr "Файл"
 msgid "Files"
 msgstr "Файлы"
 
-#: tasks/models.py:63 tasks/models.py:79 teams/models.py:56 teams/models.py:65
+#: tasks/models.py:63 tasks/models.py:79 teams/models.py:71 teams/models.py:80
 msgid "Team"
 msgstr "Команда"
 
@@ -161,7 +161,7 @@ msgstr "Отправленные флаги"
 msgid "You have already passed this flag"
 msgstr "Вы уже сдали этот флаг"
 
-#: teams/apps.py:8 teams/models.py:57
+#: teams/apps.py:8 teams/models.py:72
 msgid "Teams"
 msgstr "Команды"
 
@@ -181,22 +181,44 @@ msgstr "ВУЗ"
 msgid "Command type"
 msgstr "Тип комманды"
 
-#: teams/models.py:50
-msgid "Is Staff"
+#: teams/models.py:48
+msgid "PC Count"
+msgstr "Кол-во ПК"
+
+#: teams/models.py:53
+msgid "staff status"
 msgstr ""
 
-#: teams/models.py:51
-msgid "Is Superuser"
+#: teams/models.py:55
+msgid "Designates whether the user can log into this admin site."
 msgstr ""
 
-#: teams/models.py:68
+#: teams/models.py:59
+msgid "active"
+msgstr ""
+
+#: teams/models.py:62
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr ""
+
+#: teams/models.py:66
+msgid "date joined"
+msgstr ""
+
+#: teams/models.py:83
+msgid "Email"
+msgstr ""
+
+#: teams/models.py:84
 msgid "Is Captain"
 msgstr "Капитан"
 
-#: teams/models.py:71
+#: teams/models.py:87
 msgid "Team participant"
 msgstr "Участник команды"
 
-#: teams/models.py:72
+#: teams/models.py:88
 msgid "Team participants"
 msgstr "Участники команды"
