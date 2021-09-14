@@ -1,10 +1,11 @@
 from django.apps import apps
 from django.contrib.auth.hashers import make_password
 from typing import Any, Optional
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.utils.translation import gettext_lazy as _
 from django.db import models
 from model_utils import Choices
+from django.utils import timezone
 
 
 class TeamManager(BaseUserManager):
@@ -36,7 +37,7 @@ class TeamManager(BaseUserManager):
         return self._create_user(name, password, **extra_fields)
 
 
-class Team(AbstractBaseUser):
+class Team(PermissionsMixin, AbstractBaseUser):
     USERNAME_FIELD = 'name'
     TEAM_TYPES = Choices(('newbies', _('Newbies')), ('experienced', _('Experienced')))
 
@@ -46,8 +47,22 @@ class Team(AbstractBaseUser):
     score = models.IntegerField(_('Score'), default=0)
 
     is_visible = models.BooleanField(_('Is Visible'), default=True)
-    is_staff = models.BooleanField(_('Is Staff'), default=False)
-    is_superuser = models.BooleanField(_('Is Superuser'), default=False)
+
+    is_staff = models.BooleanField(
+        _('staff status'),
+        default=False,
+        help_text=_('Designates whether the user can log into this admin site.'),
+    )
+
+    is_active = models.BooleanField(
+        _('active'),
+        default=True,
+        help_text=_(
+            'Designates whether this user should be treated as active. '
+            'Unselect this instead of deleting accounts.'
+        ),
+    )
+    date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
     objects = TeamManager()
 

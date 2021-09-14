@@ -13,4 +13,4 @@ class SiteSettings(SingletonModel):
         verbose_name_plural = _('Site settings')
 
     def __str__(self) -> str:
-        return _('Site settings')
+        return 'Site settings'
