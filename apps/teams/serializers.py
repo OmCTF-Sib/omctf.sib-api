@@ -1,12 +1,14 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, EmailField
 from apps.teams.models import Team, TeamParticipant
 from drf_writable_nested.serializers import WritableNestedModelSerializer
 
 
 class TeamParticipantSerializer(WritableNestedModelSerializer):
+    email = EmailField(allow_null=True, allow_blank=False)
+
     class Meta:
         model = TeamParticipant
-        fields = ('pk', 'name', 'is_captain')
+        fields = ('pk', 'name', 'email', 'is_captain')
 
 
 class TeamSerializer(ModelSerializer):
@@ -23,4 +25,4 @@ class TeamCreateSerializer(WritableNestedModelSerializer):
 
     class Meta:
         model = Team
-        fields = ('name', 'password', 'university', 'team_type', 'participants')
+        fields = ('name', 'password', 'university', 'team_type', 'participants', 'pc_count')
