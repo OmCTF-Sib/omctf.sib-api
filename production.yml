@@ -64,7 +64,7 @@ services:
     env_file:
       - .env
     volumes:
-      - .:/apps
+      - .:/app
 
   psql:
     restart: unless-stopped
