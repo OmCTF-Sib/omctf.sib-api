@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-13 20:19+0000\n"
+"POT-Creation-Date: 2021-09-14 08:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,27 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: main/apps.py:8
+msgid "Main settings"
+msgstr "Основные настройки"
+
+#: main/models.py:7
+msgid "Competitions name"
+msgstr "Назание соревнований"
+
+#: main/models.py:8
+msgid "Is Competition Started"
+msgstr "Соревнования начались ?"
+
+#: main/models.py:9
+msgid "Max Participants in Team"
+msgstr "Максимальное кол-во участников в команде"
+
+#: main/models.py:12 main/models.py:13 main/models.py:16
+msgid "Site settings"
+msgstr "Настройки сайта"
+
 #: notifications/apps.py:8 notifications/models.py:15
 msgid "Notifications"
 msgstr "Уведомления"
@@ -31,7 +52,7 @@ msgstr "Заголовок"
 msgid "Text"
 msgstr "Текст"
 
-#: notifications/models.py:10 tasks/models.py:37 teams/models.py:19
+#: notifications/models.py:10 tasks/models.py:37 teams/models.py:49
 msgid "Is Visible"
 msgstr "Видимость"
 
@@ -51,7 +72,9 @@ msgstr "Новая подсказка"
 #, python-format
 msgid ""
 "A hint was added to the task: %(task)s (%(task_type)s - {%(task_score)s})"
-msgstr "Была добавлена подсказка для задания: %(task)s (%(task_type)s - {%(task_score)s})"
+msgstr ""
+"Была добавлена подсказка для задания: %(task)s (%(task_type)s - "
+"{%(task_score)s})"
 
 #: tasks/listeners.py:33
 msgid "First blood"
@@ -62,7 +85,7 @@ msgstr "First blood"
 msgid "Team: %(team)s made first blood on %(task)s"
 msgstr "Команда: %(team)s пролила первую кровь на задании %(task)s"
 
-#: tasks/models.py:9 tasks/models.py:21 teams/models.py:14 teams/models.py:33
+#: tasks/models.py:9 tasks/models.py:21 teams/models.py:44 teams/models.py:67
 msgid "Name"
 msgstr "Название"
 
@@ -78,7 +101,7 @@ msgstr "Типы заданий"
 msgid "Description"
 msgstr "Описание"
 
-#: tasks/models.py:23 teams/models.py:17
+#: tasks/models.py:23 teams/models.py:47
 msgid "Score"
 msgstr "Кол-во баллов"
 
@@ -110,7 +133,7 @@ msgstr "Файл"
 msgid "Files"
 msgstr "Файлы"
 
-#: tasks/models.py:63 tasks/models.py:79 teams/models.py:22 teams/models.py:31
+#: tasks/models.py:63 tasks/models.py:79 teams/models.py:56 teams/models.py:65
 msgid "Team"
 msgstr "Команда"
 
@@ -134,38 +157,46 @@ msgstr "Отправленный флаг"
 msgid "Sent flags"
 msgstr "Отправленные флаги"
 
-#: tasks/views.py:53
+#: tasks/views.py:66
 msgid "You have already passed this flag"
 msgstr "Вы уже сдали этот флаг"
 
-#: teams/apps.py:8 teams/models.py:23
+#: teams/apps.py:8 teams/models.py:57
 msgid "Teams"
 msgstr "Команды"
 
-#: teams/models.py:10
+#: teams/models.py:42
 msgid "Newbies"
 msgstr "Новички"
 
-#: teams/models.py:11
+#: teams/models.py:42
 msgid "Experienced"
 msgstr "Опытные"
 
-#: teams/models.py:15
+#: teams/models.py:45
 msgid "University"
 msgstr "ВУЗ"
 
-#: teams/models.py:16
+#: teams/models.py:46
 msgid "Command type"
 msgstr "Тип комманды"
 
-#: teams/models.py:34
+#: teams/models.py:50
+msgid "Is Staff"
+msgstr ""
+
+#: teams/models.py:51
+msgid "Is Superuser"
+msgstr ""
+
+#: teams/models.py:68
 msgid "Is Captain"
 msgstr "Капитан"
 
-#: teams/models.py:37
+#: teams/models.py:71
 msgid "Team participant"
 msgstr "Участник команды"
 
-#: teams/models.py:38
+#: teams/models.py:72
 msgid "Team participants"
 msgstr "Участники команды"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-13 20:24+0000\n"
+"POT-Creation-Date: 2021-09-14 08:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: main/apps.py:8
+msgid "Main settings"
+msgstr ""
+
+#: main/models.py:7
+msgid "Competitions name"
+msgstr ""
+
+#: main/models.py:8
+msgid "Is Competition Started"
+msgstr ""
+
+#: main/models.py:9
+msgid "Max Participants in Team"
+msgstr ""
+
+#: main/models.py:12 main/models.py:13 main/models.py:16
+msgid "Site settings"
+msgstr ""
+
 #: notifications/apps.py:8 notifications/models.py:15
 msgid "Notifications"
 msgstr ""
@@ -29,7 +50,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: notifications/models.py:10 tasks/models.py:37 teams/models.py:19
+#: notifications/models.py:10 tasks/models.py:37 teams/models.py:49
 msgid "Is Visible"
 msgstr ""
 
@@ -60,7 +81,7 @@ msgstr ""
 msgid "Team: %(team)s made first blood on %(task)s"
 msgstr ""
 
-#: tasks/models.py:9 tasks/models.py:21 teams/models.py:14 teams/models.py:33
+#: tasks/models.py:9 tasks/models.py:21 teams/models.py:44 teams/models.py:67
 msgid "Name"
 msgstr ""
 
@@ -76,7 +97,7 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: tasks/models.py:23 teams/models.py:17
+#: tasks/models.py:23 teams/models.py:47
 msgid "Score"
 msgstr ""
 
@@ -108,7 +129,7 @@ msgstr ""
 msgid "Files"
 msgstr ""
 
-#: tasks/models.py:63 tasks/models.py:79 teams/models.py:22 teams/models.py:31
+#: tasks/models.py:63 tasks/models.py:79 teams/models.py:56 teams/models.py:65
 msgid "Team"
 msgstr ""
 
@@ -132,38 +153,46 @@ msgstr ""
 msgid "Sent flags"
 msgstr ""
 
-#: tasks/views.py:53
+#: tasks/views.py:66
 msgid "You have already passed this flag"
 msgstr ""
 
-#: teams/apps.py:8 teams/models.py:23
+#: teams/apps.py:8 teams/models.py:57
 msgid "Teams"
 msgstr ""
 
-#: teams/models.py:10
+#: teams/models.py:42
 msgid "Newbies"
 msgstr ""
 
-#: teams/models.py:11
+#: teams/models.py:42
 msgid "Experienced"
 msgstr ""
 
-#: teams/models.py:15
+#: teams/models.py:45
 msgid "University"
 msgstr ""
 
-#: teams/models.py:16
+#: teams/models.py:46
 msgid "Command type"
 msgstr ""
 
-#: teams/models.py:34
+#: teams/models.py:50
+msgid "Is Staff"
+msgstr ""
+
+#: teams/models.py:51
+msgid "Is Superuser"
+msgstr ""
+
+#: teams/models.py:68
 msgid "Is Captain"
 msgstr ""
 
-#: teams/models.py:37
+#: teams/models.py:71
 msgid "Team participant"
 msgstr ""
 
-#: teams/models.py:38
+#: teams/models.py:72
 msgid "Team participants"
 msgstr ""
