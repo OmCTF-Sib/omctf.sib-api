@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class SiteSettings(SingletonModel):
-    name = models.CharField(_('Competitions name'), default='OmCTF.Sib')
+    name = models.CharField(_('Competitions name'), max_length=255, default='OmCTF.Sib')
     is_started = models.BooleanField(_('Is Competition Started'), default=False)
     max_participants = models.IntegerField(_('Max Participants in Team'), default=4)
 
