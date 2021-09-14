@@ -117,4 +117,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-DJOSER = {'SERIALIZERS': {'user_create': 'apps.teams.serializers.TeamCreateSerializer'}}
+DJOSER = {
+    'SERIALIZERS': {
+        'user_create': 'apps.teams.serializers.TeamCreateSerializer',
+        'current_user': 'apps.teams.serializers.TeamSerializer',
+    }
+}
