@@ -1,7 +1,7 @@
 # OmCTF.Sib - API
 
 ## Preparation for production
-###Add your domain in production.yml
+### Add your domain in production.yml
 ```bash
 - traefik.http.routers.nginx.rule=Host(`example.com`)
 ```
